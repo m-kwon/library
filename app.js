@@ -15,5 +15,19 @@ function addBookToLibrary(newBook) {
   myLibrary.push(newBook);
 }
 
-let book = new Book("LOTR", "J.R.R. Tolkien", 500, false);
-console.log(book.info());
+function displayLibrary() {
+  myLibrary.forEach(book => {
+    let newDiv = document.createElement("div");
+    let newContent = document.createTextNode(book.info());
+    newDiv.appendChild(newContent);
+    document.body.appendChild(newDiv);
+  })
+}
+
+let book1 = new Book("AAA", "aaa", 500, false);
+let book2 = new Book("BBB", "bbb", 500, true);
+let book3 = new Book("CCC", "ccc", 500, false);
+addBookToLibrary(book1);
+addBookToLibrary(book2);
+addBookToLibrary(book3);
+displayLibrary();
