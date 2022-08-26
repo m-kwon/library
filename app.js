@@ -5,7 +5,7 @@ function Book(title, author, pages, isRead) {
   this.isRead = isRead // boolean
 }
 
-function Library(books) {
+function Library() {
   this.books = []; // array
 }
 
