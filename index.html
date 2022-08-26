@@ -6,16 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Library</title>
     <link rel="stylesheet" href="styles.css">
-
   </head>
   <body>
     <header class="header">
-      <div class="header-container">
+      <div class="container">
         <h1>library</h1>
       </div>
     </header>
-    <main class="main-container">
-      <button class="add-book-btn" id="add-book-btn">add book</button>
+    <main class="main container">
+      <button class="btn btn-add" id="add-book-btn">+ add book</button>
       <div class="books-grid" id="books-grid"></div>
     </main>
     <!-- modal window -->
@@ -47,14 +46,14 @@
           required
           max="5000"
         />
-        <div class="is-read" id="is-read">
+        <div class="is-read">
           <label for="is-read">Have you read it?</label>
-          <input class="checkbox" type="checkbox" id="is-read"/>
+          <input class="checkbox" type="checkbox" id="is-read" />
         </div>
-        <button class="submit-btn" id="submit-btn" type="submit">Submit</button>
+        <button class="btn btn-green" type="submit">Submit</button>
       </form>
     </div>
-    <div class="overlay" id="overlay">test</div>
+    <div class="overlay" id="overlay"></div>
 	  <script src="app.js"></script>
   </body>
 </html>
