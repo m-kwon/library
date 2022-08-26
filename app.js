@@ -120,6 +120,7 @@ const addBook = (e) => {
   if (library.isInLibrary(newBook)) {
     errorMsg.textContent = 'This book is already in your library';
     errorMsg.classList.add('active');
+    return;
   };
 
   library.addBook(newBook);
