@@ -22,13 +22,34 @@
     <div class="modal" id="add-book-modal">
       <form class="add-book-form" id="add-book-form">
         <h4>Add a new book</h4>
-        <input />
+        <input
+          class="input"
+          type="text"
+          id="title"
+          placeholder="Title"
+          required
+          maxlength="100"
+        />
         <p class="error-msg" id="error-msh"></p>
-        <input />
-        <input />
+        <input
+          class="input"
+          type="text"
+          id="author"
+          placeholder="Author"
+          required
+          maxlength="100"
+        />
+        <input
+          class="input"
+          type="number"
+          id="pages"
+          placeholder="Pages"
+          required
+          max="5000"
+        />
         <div class="is-read" id="is-read">
           <label for="is-read">Have you read it?</label>
-          <input />
+          <input class="checkbox" type="checkbox" id="is-read"/>
         </div>
         <button class="submit-btn" id="submit-btn" type="submit">Submit</button>
       </form>
