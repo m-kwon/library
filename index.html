@@ -6,8 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Library</title>
     <link rel="stylesheet" href="styles.css">
+
   </head>
   <body>
+    <header class="header">
+      <div class="header-container">
+        <h1>library</h1>
+      </div>
+    </header>
+    <main class="main-container">
+      <button class="add-book-btn" id="add-book-btn">add book</button>
+      <div class="books-grid" id="books-grid"></div>
+    </main>
+    <!-- modal window -->
+    <div class="modal" id="add-book-modal">
+      <form class="add-book-form" id="add-book-form">
+        <h4>Add a new book</h4>
+        <input />
+        <p class="error-msg" id="error-msh"></p>
+        <input />
+        <input />
+        <div class="is-read" id="is-read">
+          <label for="is-read">Have you read it?</label>
+          <input />
+        </div>
+        <button class="submit-btn" id="submit-btn" type="submit">Submit</button>
+      </form>
+    </div>
 	  <script src="app.js"></script>
   </body>
 </html>
