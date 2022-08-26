@@ -54,6 +54,17 @@ const handleEscapeInput = (e) => {
   if (e.key === 'Escape') closeAddBookModal();
 };
 
+const updateBooksGrid = () => {
+  resetBooksGrid();
+  for (let book of library.books) {
+    createBookCard(book);
+  };
+};
+
+const resetBooksGrid = () => {
+  booksGrid.innerHTML = '';
+};
+
 const createBookCard = (book) => {
   const bookCard = document.createElement('div');
   const title = document.createElement('p');
@@ -107,6 +118,7 @@ const addBook = (e) => {
   };
 
   library.addBook(newBook);
+  updateBooksGrid();
   closeAddBookModal();
 };
 
@@ -114,6 +126,7 @@ const removeBook = (e) => {
   const title = e.target.parentNode.parentNode.firstChild.innerHTML.replaceAll('""', '');
 
   library.removeBook(title);
+  updateBooksGrid();
 };
 
 addBookButton.onclick = openAddBookModal;
