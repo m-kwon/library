@@ -129,5 +129,15 @@ const removeBook = (e) => {
   updateBooksGrid();
 };
 
+const toggleRead = (e) => {
+  const title = e.target.parentNode.parentNode.firstChild.innerHTML.replaceAll('""', '');
+  const book = library.getBook(title);
+
+  book.isRead = !book.isRead;
+  updateBooksGrid();
+};
+
 addBookButton.onclick = openAddBookModal;
 overlay.onclick = closeAddBookModal;
+addBookForm.onsubmit = addBook;
+window.onkeydown = handleEscapeInput;
