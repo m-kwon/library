@@ -89,5 +89,32 @@ const createBookCard = (book) => {
   booksGrid.appendChild(bookCard);
 };
 
+const getBookFromInput = () => {
+  const title = document.getElementById('title').value;
+  const author = document.getElementById('author').value;
+  const pages = document.getElementById('pages').value;
+  const isRead = document.getElementById('is-read').value;
+  return new Book(title, author, pages, isRead);
+};
+
+const addBook = (e) => {
+  e.preventDefault();
+  const newBook = getBookFromInput();
+
+  if (library.isInLibrary(newBook)) {
+    errorMsg.textContent = 'This book is already in your library';
+    errorMsg.classList.add('active');
+  };
+
+  library.addBook(newBook);
+  closeAddBookModal();
+};
+
+const removeBook = (e) => {
+  const title = e.target.parentNode.parentNode.firstChild.innerHTML.replaceAll('""', '');
+
+  library.removeBook(title);
+};
+
 addBookButton.onclick = openAddBookModal;
 overlay.onclick = closeAddBookModal;
