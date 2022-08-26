@@ -1,33 +1,33 @@
-let myLibrary = [];
-
 function Book(title, author, pages, isRead) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isRead = isRead ? "read" : "not read yet"
+  this.title = title // text
+  this.author = author // text
+  this.pages = pages // number
+  this.isRead = isRead // boolean
 }
 
-Book.prototype.info = function() {
-  return `${this.title} by ${this.author}, ${this.pages} pages, ${this.isRead}`;
+function Library(books) {
+  this.books = []; // array
 }
 
-function addBookToLibrary(newBook) {
-  myLibrary.push(newBook);
+Library.prototype.addBook = function(newBook) {
+  if (!this.isInLibrary(newBook)) {
+    this.books.push(newBook)
+  }
 }
 
-function displayLibrary() {
-  myLibrary.forEach(book => {
-    let newDiv = document.createElement("div");
-    let newContent = document.createTextNode(book.info());
-    newDiv.appendChild(newContent);
-    document.body.appendChild(newDiv);
-  })
+Library.prototype.removeBook = function(title) {
+  this.books = this.books.filter((book) => book.title !== title)
 }
 
-let book1 = new Book("AAA", "aaa", 500, false);
-let book2 = new Book("BBB", "bbb", 500, true);
-let book3 = new Book("CCC", "ccc", 500, false);
-addBookToLibrary(book1);
-addBookToLibrary(book2);
-addBookToLibrary(book3);
-displayLibrary();
+Library.prototype.getBook = function(title) {
+  return this.books.find((book) => book.title === title)
+}
+
+Library.prototype.isInLibrary = function(newBook) {
+  return this.books.some((book) => book.title === newBook.title)
+}
+
+const library = new Library();
+const book1 = new Book("AAA", "aaa", 100, true);
+library.addBook(book1);
+console.log(library);
