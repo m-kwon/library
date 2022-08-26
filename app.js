@@ -1,12 +1,16 @@
 function Book(title, author, pages, isRead) {
-  this.title = title; // text
-  this.author = author; // text
-  this.pages = pages; // number
-  this.isRead = isRead; // boolean
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.isRead = isRead;
 };
 
 function Library() {
-  this.books = []; // array
+  this.books = [];
+};
+
+Library.prototype.isInLibrary = function(newBook) {
+  return this.books.some((book) => book.title === newBook.title);
 };
 
 Library.prototype.addBook = function(newBook) {
@@ -21,10 +25,6 @@ Library.prototype.removeBook = function(title) {
 
 Library.prototype.getBook = function(title) {
   return this.books.find((book) => book.title === title);
-};
-
-Library.prototype.isInLibrary = function(newBook) {
-  return this.books.some((book) => book.title === newBook.title);
 };
 
 const library = new Library();
@@ -81,12 +81,17 @@ const createBookCard = (book) => {
   readButton.onclick = toggleRead;
   removeButton.onclick = removeBook;
 
+  title.textContent = `"${book.title}"`;
+  author.textContent = book.author;
+  pages.textContent = `${book.pages} pages`;
+  removeButton.textContent = 'Remove';
+
   if (book.isRead) {
     readButton.textContent = 'Read';
-    readButton.classList.add('btn-green');
+    readButton.classList.add('btn-light-green');
   } else {
     readButton.textContent = 'Not read';
-    readButton.classList.add('btn-red');
+    readButton.classList.add('btn-light-red');
   }
 
   bookCard.appendChild(title);
@@ -104,7 +109,7 @@ const getBookFromInput = () => {
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
   const pages = document.getElementById('pages').value;
-  const isRead = document.getElementById('is-read').value;
+  const isRead = document.getElementById('is-read').checked;
   return new Book(title, author, pages, isRead);
 };
 
