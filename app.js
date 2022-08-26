@@ -50,5 +50,44 @@ const closeAddBookModal = () => {
   errorMsg.textContent = '';
 };
 
+const handleEscapeInput = (e) => {
+  if (e.key === 'Escape') closeAddBookModal();
+};
+
+const createBookCard = (book) => {
+  const bookCard = document.createElement('div');
+  const title = document.createElement('p');
+  const author = document.createElement('p');
+  const pages = document.createElement('p');
+  const buttonGroup = document.createElement('div');
+  const readButton = document.createElement('button');
+  const removeButton = document.createElement('button');
+
+  bookCard.classList.add('book-card');
+  buttonGroup.classList.add('button-group');
+  readButton.classList.add('btn');
+  removeButton.classList.add('btn');
+  readButton.onclick = toggleRead;
+  removeButton.onclick = removeBook;
+
+  if (book.isRead) {
+    readButton.textContent = 'Read';
+    readButton.classList.add('btn-green');
+  } else {
+    readButton.textContent = 'Not read';
+    readButton.classList.add('btn-red');
+  }
+
+  bookCard.appendChild(title);
+  bookCard.appendChild(author);
+  bookCard.appendChild(pages);
+
+  buttonGroup.appendChild(readButton);
+  buttonGroup.appendChild(removeButton);
+  bookCard.appendChild(buttonGroup);
+
+  booksGrid.appendChild(bookCard);
+};
+
 addBookButton.onclick = openAddBookModal;
 overlay.onclick = closeAddBookModal;
