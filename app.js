@@ -129,14 +129,14 @@ const addBook = (e) => {
 };
 
 const removeBook = (e) => {
-  const title = e.target.parentNode.parentNode.firstChild.innerHTML.replaceAll('""', '');
+  const title = e.target.parentNode.parentNode.firstChild.innerHTML.replaceAll('"', '');
 
   library.removeBook(title);
   updateBooksGrid();
 };
 
 const toggleRead = (e) => {
-  const title = e.target.parentNode.parentNode.firstChild.innerHTML.replaceAll('""', '');
+  const title = e.target.parentNode.parentNode.firstChild.innerHTML.replaceAll('"', '');
   const book = library.getBook(title);
 
   book.isRead = !book.isRead;
